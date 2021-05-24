@@ -1,33 +1,23 @@
 import React from 'react';
+import WeatherInfo from '../WeatherInfo';
+import WeatherDetails from '../WeatherDetails';
 
 import styled from 'styled-components';
+import Flex from '../../Components/Flex';
 
-const Container = styled.div`
-    margin: 5% 8%;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px 1px #f7f7f7;
-    height: 600px;
-    background-color: white;
+
+const Wrapper = styled(Flex)`
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+
 `;
 
-const WeatherBg = styled.div`
-    width: 100%;
-    height: 60%;
-    background-image: url('.././src/Images/sunny.jpg');
-    background-size: cover;
-    border-radius: 10px 10px 0 0;
-`;
-
-const WeatherInfo = styled.div`
-    width: 100%;
-`;
 const WeatherContainer = () => (
-    <div>
-        <Container>
-            <WeatherBg />
-            <WeatherInfo />
-        </Container>
-    </div>
+    <Wrapper>
+        <WeatherInfo />
+        <WeatherDetails />
+    </Wrapper>
 
 )
 
