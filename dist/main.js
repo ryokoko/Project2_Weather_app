@@ -119,6 +119,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./node_modules/@styled-icons/open-iconic/MagnifyingGlass/MagnifyingGlass.esm.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@styled-icons/open-iconic/MagnifyingGlass/MagnifyingGlass.esm.js ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MagnifyingGlass\": () => (/* binding */ MagnifyingGlass),\n/* harmony export */   \"MagnifyingGlassDimensions\": () => (/* binding */ MagnifyingGlassDimensions)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ \"./node_modules/@babel/runtime/helpers/esm/extends.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _styled_icons_styled_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @styled-icons/styled-icon */ \"./node_modules/@styled-icons/styled-icon/index.esm.js\");\n\n\n\nvar MagnifyingGlass = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (props, ref) {\n  var attrs = {\n    \"fill\": \"currentColor\",\n    \"xmlns\": \"http://www.w3.org/2000/svg\"\n  };\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_styled_icons_styled_icon__WEBPACK_IMPORTED_MODULE_2__.StyledIconBase, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__.default)({\n    iconAttrs: attrs,\n    iconVerticalAlign: \"middle\",\n    iconViewBox: \"0 0 8 8\"\n  }, props, {\n    ref: ref\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(\"path\", {\n    d: \"M3.5 0C1.57 0 0 1.57 0 3.5S1.57 7 3.5 7c.59 0 1.17-.14 1.66-.41a1 1 0 00.13.13l1 1a1.02 1.02 0 101.44-1.44l-1-1a1 1 0 00-.16-.13c.27-.49.44-1.06.44-1.66 0-1.93-1.57-3.5-3.5-3.5zm0 1C4.89 1 6 2.11 6 3.5c0 .66-.24 1.27-.66 1.72l-.03.03a1 1 0 00-.13.13c-.44.4-1.04.63-1.69.63-1.39 0-2.5-1.11-2.5-2.5s1.11-2.5 2.5-2.5z\"\n  }));\n});\nMagnifyingGlass.displayName = 'MagnifyingGlass';\nvar MagnifyingGlassDimensions = {\n  height: 8,\n  width: 8\n};\n\n//# sourceURL=webpack://project2_weather_app/./node_modules/@styled-icons/open-iconic/MagnifyingGlass/MagnifyingGlass.esm.js?");
+
+/***/ }),
+
 /***/ "./node_modules/@styled-icons/styled-icon/index.esm.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@styled-icons/styled-icon/index.esm.js ***!
@@ -174,6 +185,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./App/SearchBar/SearchBar.js":
+/*!************************************!*\
+  !*** ./App/SearchBar/SearchBar.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n/* harmony import */ var _Components_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Flex */ \"./Components/Flex.js\");\n/* harmony import */ var _styled_icons_open_iconic_MagnifyingGlass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @styled-icons/open-iconic/MagnifyingGlass */ \"./node_modules/@styled-icons/open-iconic/MagnifyingGlass/MagnifyingGlass.esm.js\");\n\n\n\n\nconst SearchBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.form`\n    padding: 30px;\n    position: relative;\n    \n`;\nconst SearchInput = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input`\n    border: none;\n    border-bottom:1px solid white;\n    padding: 22px 5px 5px 0;\n    background-color: transparent;\n    font-size: 1.1rem;\n    width: 70%;\n    &:focus {\n        outline:none;\n    }\n\n`;\nconst SubmitBtn = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input`\n    background-color: #e6dace;\n    border: none;\n    width: 80px;\n    height: 80px;\n    font-size: 1.1rem;\n    color: #777777;\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    &:hover {\n        cursor: pointer;\n    }\n\n`;\nconst SearchIcon = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(_styled_icons_open_iconic_MagnifyingGlass__WEBPACK_IMPORTED_MODULE_3__.MagnifyingGlass)`\n    width: 40px;\n    height: 40px;\n`;\n\nclass SearchBar extends react__WEBPACK_IMPORTED_MODULE_0__.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      page: 1\n    };\n  }\n\n  render() {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SearchBarWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SearchInput, {\n      type: \"text\",\n      id: \"location\",\n      name: \"location\",\n      placeholder: \"Search for city...\"\n    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SubmitBtn, {\n      type: \"submit\",\n      value: \"Search\"\n    })));\n  }\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchBar);\n\n//# sourceURL=webpack://project2_weather_app/./App/SearchBar/SearchBar.js?");
+
+/***/ }),
+
+/***/ "./App/SearchBar/index.js":
+/*!********************************!*\
+  !*** ./App/SearchBar/index.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* reexport safe */ _SearchBar__WEBPACK_IMPORTED_MODULE_0__.default)\n/* harmony export */ });\n/* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchBar */ \"./App/SearchBar/SearchBar.js\");\n\n\n//# sourceURL=webpack://project2_weather_app/./App/SearchBar/index.js?");
+
+/***/ }),
+
 /***/ "./App/WeatherContainer/WeatherContainer.js":
 /*!**************************************************!*\
   !*** ./App/WeatherContainer/WeatherContainer.js ***!
@@ -203,7 +236,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Components_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Flex */ \"./Components/Flex.js\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\n\n\nconst WeatherDetailWrapper = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(_Components_Flex__WEBPACK_IMPORTED_MODULE_1__.default)`\n    flex: 35%;\n    background-color: #5f6e6642;\n    backdrop-filter: blur(6px);\n    flex-direction: column;\n`;\n\nconst WeatherDetails = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(WeatherDetailWrapper, null);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WeatherDetails);\n\n//# sourceURL=webpack://project2_weather_app/./App/WeatherDetails/WeatherDetails.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Components_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Flex */ \"./Components/Flex.js\");\n/* harmony import */ var _App_SearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../App/SearchBar */ \"./App/SearchBar/index.js\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\n\n\n\n\nconst WeatherDetailWrapper = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.default)(_Components_Flex__WEBPACK_IMPORTED_MODULE_1__.default)`\n    flex: 35%;\n    background-color: #5f6e6642;\n    backdrop-filter: blur(6px);\n    flex-direction: column;\n`;\n\nconst WeatherDetails = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(WeatherDetailWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App_SearchBar__WEBPACK_IMPORTED_MODULE_2__.default, null));\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WeatherDetails);\n\n//# sourceURL=webpack://project2_weather_app/./App/WeatherDetails/WeatherDetails.js?");
 
 /***/ }),
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Flex from '../../Components/Flex';
 
-import SearchBar from './App/SearchBar';
+import SearchBar from '../../App/SearchBar';
 import styled from 'styled-components';
 
 const WeatherDetailWrapper = styled(Flex)`
