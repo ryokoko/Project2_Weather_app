@@ -1,6 +1,6 @@
 import React from 'react';
+import WeatherOverview from '../WeatherOverview';
 import WeatherInfo from '../WeatherInfo';
-import WeatherDetails from '../WeatherDetails';
 
 import styled from 'styled-components';
 import Flex from '../../Components/Flex';
@@ -15,8 +15,8 @@ const Wrapper = styled(Flex)`
 
 const WeatherContainer = () => (
     <Wrapper>
+        <WeatherOverview />
         <WeatherInfo />
-        <WeatherDetails />
     </Wrapper>
 
 )

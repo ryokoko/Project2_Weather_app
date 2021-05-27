@@ -12,7 +12,7 @@ const SearchBarWrapper = styled.form`
 
 const SearchInput = styled.input`
     border: none;
-    border-bottom:1px solid white;
+    border-bottom:1.2px solid #cfcfd2;
     padding: 22px 5px 5px 0;
     background-color: transparent;
     font-size: 1.1rem;
