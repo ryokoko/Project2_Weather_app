@@ -5,10 +5,10 @@ import Flex from '../../Components/Flex';
 
 import FiveDayForecast from '../FiveDayForecast';
 
+import axios from 'axios';
+
 const DetailWrapper = styled.div`
     margin: 35px;
-
-
 `;
 
 const WeatherTitle = styled.div`
@@ -16,6 +16,9 @@ const WeatherTitle = styled.div`
     color: #ebeff1;
     padding: 10px 0px;
     font-size: 1.2rem;
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+    }
 `;
 
 const DetailedWeather = styled(Flex)`
@@ -29,6 +32,10 @@ const DetailedWeather = styled(Flex)`
         color: #ffffff;
         float: right;
     }
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+    }
+
 
 `;
 
@@ -43,6 +50,14 @@ class WeatherDetails extends React.Component {
         }
 
     }
+/* 
+    componentDidMount() {
+        axios
+            .get('http://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=canberra&days=5')
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error))
+
+    } */
 
 
     render() {
@@ -55,10 +70,8 @@ class WeatherDetails extends React.Component {
                     <div>Temperature &#176;C: <span>{`${temp_min} / ${temp_max}`}</span></div>
                     <div>Wind: <span>{wind} km/h</span></div>
                     <div>Humidity: <span>{humidity} %</span></div>
-                    <FiveDayForecast />
                 </DetailedWeather>
-
-
+                <FiveDayForecast />
             </DetailWrapper>
         )
     }

@@ -10,28 +10,35 @@ const Navbar = styled(Flex)`
     padding: 3% 5%;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
+    width: 100%;
 
 `;
 
 const Logo = styled.div`
     flex: 25%;
     text-align: center;
-    color: #9c75b1;
     font-weight: 600;
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+    }
 `;
 
-const HeadInfo = styled.div`
+const HeaderDate = styled.div`
     flex: 75%;
     text-align: center;
+    @media (max-width: 768px) {
+        font-size:0.9rem;
+    }
 `;
 
-const Header = () => (
+const Header = ({ date }) => {
+    return (
     <div>
         <Navbar>
-            <Logo>ZEN Weather</Logo>
-            <HeadInfo>Sunday, 23 May 2021</HeadInfo>
+            <Logo>.Weather</Logo>
+            <HeaderDate>{`${date}`}</HeaderDate>
         </Navbar>
     </div>
-)
+)}
 
 export default Header;

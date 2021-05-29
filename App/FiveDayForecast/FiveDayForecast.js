@@ -17,14 +17,18 @@ const ForecastItem = styled(Flex)`
     flex-direction: row;
     justify-content: space-between;
     color: #e4e4e4;
-    padding: 20px 6px;
+    padding: 15px 0px;
     span {
         color: #ffffff;
     }
-    &:hover {
+/*     &:hover {
         border-radius: 5px;
         box-shadow: 0px 0px 11px 1px #d4d8e2;
         transition: 0.1s ease-in;
+    } */
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 5px 0px;
     }
 `;
 

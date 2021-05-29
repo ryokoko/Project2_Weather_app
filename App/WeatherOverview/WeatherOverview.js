@@ -1,7 +1,7 @@
 import { WeatherSunny } from '@styled-icons/fluentui-system-filled/WeatherSunny';
 import React from 'react';
 import Flex from '../../Components/Flex';
-import Header from '../../App/Header';
+/* import Header from '../../App/Header'; */
 import styled from 'styled-components';
 
 const WeatherOverviewWrapper = styled.div`
@@ -15,35 +15,52 @@ const WeatherOverviewBox = styled(Flex)`
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
+    @media (max-width: 768px) {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        margin-left: 5%;
+    }
 `;
 const CurrentTemp = styled.div`
     font-size: 5rem;
+    @media (max-width: 768px) {
+        font-size: 3rem;
+    }
 `;
 
 const CurrentCity = styled.div`
     font-size: 3rem;
     padding: 0 2%;
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
 `;
 
 const CurrentWeather = styled.div`
 
 `;
-const CurrentWeatherIcon = styled(WeatherSunny)`
-    height: 100px;
-    width: 100px;
+const CurrentWeatherIcon = styled.div`
+    height: 60px;
+    width: 60px;
 `;
 const WeatherStat = styled.div`
     font-size: 1.5rem;
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+    }
 `;
-const WeatherOverview = () => (
+
+
+const WeatherOverview = ( { temp, city, icon, condition } ) => (
+    
     <WeatherOverviewWrapper>
-        <Header />
+
         <WeatherOverviewBox>
-            <CurrentTemp>16&#176;</CurrentTemp>
-            <CurrentCity>Canberra</CurrentCity>
+            <CurrentTemp>{`${ temp }`} &#176;</CurrentTemp>
+            <CurrentCity>{`${ city }`}</CurrentCity>
             <CurrentWeather>
-                <CurrentWeatherIcon />
-                <WeatherStat>Sunny</WeatherStat>
+                <CurrentWeatherIcon>{`${ icon }`}</CurrentWeatherIcon>
+                <WeatherStat>{`${ condition }`}</WeatherStat>
             </CurrentWeather>
         </WeatherOverviewBox>
     </WeatherOverviewWrapper>
