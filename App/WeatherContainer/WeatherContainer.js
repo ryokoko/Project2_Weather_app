@@ -1,7 +1,6 @@
 import React from 'react';
 import WeatherOverview from '../WeatherOverview';
 import WeatherInfo from '../WeatherInfo';
-import Header from '../Header';
 
 import styled from 'styled-components';
 import Flex from '../../Components/Flex';
@@ -57,8 +56,7 @@ class WeatherContainer extends React.Component {
         const { currentDateAndTime, currentTemp, currentCity, currentWeather, currentWeatherIcon } = this.state;
         return(
             <Wrapper>
-                <WeatherOverview temp={currentTemp} city={currentCity} icon={currentWeatherIcon} condition={currentWeather}>
-                    <Header date={currentDateAndTime} />
+                <WeatherOverview date={currentDateAndTime} temp={currentTemp} city={currentCity} icon={currentWeatherIcon} condition={currentWeather}>
                 </WeatherOverview>
                 <WeatherInfo />
             </Wrapper>

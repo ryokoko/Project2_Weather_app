@@ -1,7 +1,7 @@
 import { WeatherSunny } from '@styled-icons/fluentui-system-filled/WeatherSunny';
 import React from 'react';
 import Flex from '../../Components/Flex';
-/* import Header from '../../App/Header'; */
+import Header from '../../App/Header'; 
 import styled from 'styled-components';
 
 const WeatherOverviewWrapper = styled.div`
@@ -51,10 +51,10 @@ const WeatherStat = styled.div`
 `;
 
 
-const WeatherOverview = ( { temp, city, icon, condition } ) => (
+const WeatherOverview = ( { date, temp, city, icon, condition } ) => (
     
     <WeatherOverviewWrapper>
-
+        <Header currentDate={date} />
         <WeatherOverviewBox>
             <CurrentTemp>{`${ temp }`} &#176;</CurrentTemp>
             <CurrentCity>{`${ city }`}</CurrentCity>

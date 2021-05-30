@@ -31,12 +31,12 @@ const HeaderDate = styled.div`
     }
 `;
 
-const Header = ({ date }) => {
+const Header = ({ currentDate }) => {
     return (
     <div>
         <Navbar>
             <Logo>.Weather</Logo>
-            <HeaderDate>{`${date}`}</HeaderDate>
+            <HeaderDate>{`${currentDate}`}</HeaderDate>
         </Navbar>
     </div>
 )}
