@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
                 height: 100%;
         }
         body {
-                background-image: url('../src/Images/sunny.jpg'); /* 用的是html文件的relative path */
+                background-image: url('./src/Images/sunny.jpg'); /* 用的是html文件的relative path */
                 background-size: auto;
                 background-repeat: no-repeat;
                 font-family: sans-serif;
