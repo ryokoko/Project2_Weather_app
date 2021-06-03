@@ -35,7 +35,7 @@ class WeatherContainer extends React.Component {
         /* fetch('http://api.openweathermap.org/data/2.5/weather?q=Canberra&appid=e48f7f46ea5efdfed61f45f51c482df2&units=metric', {
             method: 'GET',
         })    */
-        fetch('http://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=canberra&aqi=no', {
+        fetch('https://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=canberra&aqi=no', {
             method: 'GET',
         })
         .then((res) => res.json())
