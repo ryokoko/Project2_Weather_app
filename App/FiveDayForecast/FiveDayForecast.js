@@ -3,14 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Flex from '../../Components/Flex';
 
-import { WeatherBlowingSnow, WeatherCloudy, WeatherDrizzle, 
-    WeatherFog, WeatherPartlyCloudyDay, WeatherRain,
-    WeatherSnowflake, WeatherSunny, WeatherThunderstorm, WeatherHaze } from '@styled-icons/fluentui-system-regular';
-
 const ForecastWrapper = styled(Flex)`
     flex-direction: column;
-
-
 `;
 
 const ForecastItem = styled(Flex)`
@@ -21,11 +15,7 @@ const ForecastItem = styled(Flex)`
     span {
         color: #ffffff;
     }
-/*     &:hover {
-        border-radius: 5px;
-        box-shadow: 0px 0px 11px 1px #d4d8e2;
-        transition: 0.1s ease-in;
-    } */
+
     @media (max-width: 768px) {
         font-size: 0.9rem;
         padding: 5px 0px;
@@ -33,33 +23,16 @@ const ForecastItem = styled(Flex)`
 `;
 
 
-class FiveDayForecast extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            weekday: 'Monday',
-            weatherSymbol: 'Loading...',
-            temp_min: '--',
-            temp_max: '--',
-        }
-    }
+const FiveDayForecast = ({ fiveDayForecast }) => {
+    console.log(fiveDayForecast);
 
-    render () {
-        const { weekday, weatherSymbol, temp_min, temp_max } = this.state;
-
-        return (
-            <ForecastWrapper>
-                <ForecastItem>{weekday} <span>{weatherSymbol}</span> <span>{`${temp_min} / ${temp_max}`} &#176;C</span> </ForecastItem>
-                <ForecastItem>{weekday} <span>{weatherSymbol}</span> <span>{`${temp_min} / ${temp_max}`} &#176;C</span> </ForecastItem>
-                <ForecastItem>{weekday} <span>{weatherSymbol}</span> <span>{`${temp_min} / ${temp_max}`} &#176;C</span> </ForecastItem>
-                <ForecastItem>{weekday} <span>{weatherSymbol}</span> <span>{`${temp_min} / ${temp_max}`} &#176;C</span> </ForecastItem>
-                <ForecastItem>{weekday} <span>{weatherSymbol}</span> <span>{`${temp_min} / ${temp_max}`} &#176;C</span> </ForecastItem>
-
-            </ForecastWrapper>
+    return (
+        <ForecastWrapper>
+        </ForecastWrapper>
 
 
-        )
-    }
+    )
 }
+
 
 export default FiveDayForecast;

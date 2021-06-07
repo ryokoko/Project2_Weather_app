@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Flex from '../../Components/Flex';
+import CurrentDate from '../CurrentDate';
 
 const Navbar = styled(Flex)`
     flex-direction: row;
@@ -10,8 +11,6 @@ const Navbar = styled(Flex)`
     padding: 3% 5%;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
-    width: 100%;
-
 `;
 
 const Logo = styled.div`
@@ -23,22 +22,13 @@ const Logo = styled.div`
     }
 `;
 
-const HeaderDate = styled.div`
-    flex: 75%;
-    text-align: center;
-    @media (max-width: 768px) {
-        font-size:0.9rem;
-    }
-`;
 
-const Header = ({ currentDate }) => {
+const Header = () => {
     return (
-    <div>
-        <Navbar>
-            <Logo>.Weather</Logo>
-            <HeaderDate>{`${currentDate}`}</HeaderDate>
-        </Navbar>
-    </div>
+    <Navbar>
+        <Logo>.Weather</Logo>
+        <CurrentDate />
+    </Navbar>
 )}
 
 export default Header;

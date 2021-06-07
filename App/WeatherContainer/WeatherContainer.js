@@ -1,6 +1,6 @@
 import React from 'react';
-import WeatherOverview from '../WeatherOverview';
-import WeatherInfo from '../WeatherInfo';
+import CurrentWeather from '../CurrentWeather';
+import ForecastWeather from '../ForecastWeather';
 
 import styled from 'styled-components';
 import Flex from '../../Components/Flex';
@@ -8,10 +8,13 @@ import Flex from '../../Components/Flex';
 /* import axios from 'axios'; */
 
 
-const Wrapper = styled(Flex)`
+const Container = styled(Flex)`
+    background-image: url('../src/Images/sunny.jpg'); /* 用的是html文件的relative path */
+    background-size: auto;
+    background-repeat: no-repeat;
     flex-direction: row;
     align-items: stretch;
-    height: 100%;
+    height: 100vh;
     @media (max-width: 768px) {
         flex-direction:column;
         width: 100%;
@@ -23,19 +26,58 @@ class WeatherContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
-            currentDateAndTime: null,
             currentTemp: '--',
             currentCity: '--',
             currentWeather: '--',
             currentWeatherIcon: null,
+            humidity: '--',
+            wind: '--',
+            maxTemp: '--',
+            minTemp: '--',
+            city: '',
         }
+        this.getWeather = this.getWeather.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount() {
-        /* fetch('http://api.openweathermap.org/data/2.5/weather?q=Canberra&appid=e48f7f46ea5efdfed61f45f51c482df2&units=metric', {
-            method: 'GET',
-        })    */
-        fetch('https://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=canberra&aqi=no', {
+        Promise.all([fetch('https://api.weatherapi.com/v1/forecast.json?key=cec7f5d329c14edbb7031703212805&q=canberra&days=1&aqi=no&alerts=no'), 
+        fetch('https://api.weatherapi.com/v1/forecast.json?key=cec7f5d329c14edbb7031703212805&q=canberra&days=5&aqi=no&alerts=no')])
+       
+        .then(([res1, res2]) => {
+            return Promise.all([res1.json(), res2.json()]);
+        })
+        .then(([result1, result2]) => {
+            this.setState({
+                currentTemp: result1.current.temp_c,
+                currentWeather: result1.current.condition.text,
+                currentCity: result1.location.name,
+                currentWeatherIcon: result1.current.condition.icon,
+                wind: result1.current.wind_kph,
+                humidity: result1.current.humidity,
+                maxTemp: result1.forecast.forecastday[0].day.maxtemp_c,
+                minTemp: result1.forecast.forecastday[0].day.mintemp_c,
+                fiveDayForecast: result2.forecast.forecastday,
+            });
+            /* console.log(result1); */
+            /* console.log(this.state.fiveDayForecast); */
+
+        })
+        .catch((error) => error && alert(error.message));
+        
+    }
+    
+
+    handleInputChange(e) {
+        /* console.log(100, e.target.value)  */
+        const { value } = e.target;
+        this.setState({
+            city: value,
+        }, () => console.log(this.state.city))       
+    }
+    getWeather() {
+        const { city } = this.state;
+        fetch(`https://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=${city}&aqi=no`, {
             method: 'GET',
         })
         .then((res) => res.json())
@@ -46,20 +88,29 @@ class WeatherContainer extends React.Component {
                 currentWeather: result.current.condition.text,
                 currentCity: result.location.name,
                 currentWeatherIcon: result.current.condition.icon,
-                currentDateAndTime: result.location.localtime,
             });
         })
-        .catch((error) => error && alert(error.message));
+        .catch((error) => error && alert(error.message));       
     }
 
+
+
     render() {
-        const { currentDateAndTime, currentTemp, currentCity, currentWeather, currentWeatherIcon } = this.state;
+        const { currentTemp, currentCity, currentWeather, currentWeatherIcon, humidity, wind, city, maxTemp, minTemp, fiveDayForecast } = this.state;
         return(
-            <Wrapper>
-                <WeatherOverview date={currentDateAndTime} temp={currentTemp} city={currentCity} icon={currentWeatherIcon} condition={currentWeather}>
-                </WeatherOverview>
-                <WeatherInfo />
-            </Wrapper>
+            <Container>
+                <CurrentWeather 
+                temp={currentTemp} 
+                currentCity={currentCity} 
+                icon={currentWeatherIcon} 
+                condition={currentWeather}>
+                </CurrentWeather>
+                <ForecastWeather city={city} 
+                humidity={humidity} wind={wind} 
+                maxTemp={maxTemp} minTemp={minTemp} 
+                fiveDayForecast={fiveDayForecast} 
+                onChange={this.handleInputChange} onSearch={this.getWeather} />
+            </Container>
         )
     }
 
