@@ -1,14 +1,14 @@
 
 import React from 'react';
 import Flex from '../../Components/Flex';
-import Header from '../../App/Header'; 
+import Header from '../Header'; 
 import styled from 'styled-components';
 
-const WeatherOverviewWrapper = styled.div`
+const Container = styled.div`
     flex: 65%;
 `;
 
-const WeatherOverviewBox = styled(Flex)`
+const Overview = styled(Flex)`
     flex-direction: row;
     text-align: center;
     margin-top: 400px;
@@ -21,14 +21,14 @@ const WeatherOverviewBox = styled(Flex)`
         margin-left: 5%;
     }
 `;
-const CurrentTemp = styled.div`
+const Temp = styled.div`
     font-size: 5rem;
     @media (max-width: 768px) {
         font-size: 3rem;
     }
 `;
 
-const CurrentCity = styled.div`
+const City = styled.div`
     font-size: 3rem;
     padding: 0 2%;
     @media (max-width: 768px) {
@@ -36,10 +36,10 @@ const CurrentCity = styled.div`
     }
 `;
 
-const CurrentWeather = styled.div`
+const Weather = styled.div`
 
 `;
-const CurrentWeatherIcon = styled.img`
+const WeatherIcon = styled.img`
     height: 60px;
     width: 60px;
 `;
@@ -51,21 +51,21 @@ const WeatherStat = styled.div`
 `;
 
 
-const WeatherOverview = ( { date, temp, city, icon, condition } ) => (
+const CurrentWeather = ( { currentCity, temp, icon, condition } ) => (
     
-    <WeatherOverviewWrapper>
-        <Header currentDate={date} />
-        <WeatherOverviewBox>
-            <CurrentTemp>{`${ temp }`} &#176;</CurrentTemp>
-            <CurrentCity>{`${ city }`}</CurrentCity>
-            <CurrentWeather>
-                <CurrentWeatherIcon src={icon}/>
+    <Container>
+        <Header />
+        <Overview>
+            <Temp>{`${ temp }`} &#176;</Temp>
+            <City>{`${ currentCity }`}</City>
+            <Weather>
+                <WeatherIcon src={icon}/>
                 <WeatherStat>{`${ condition }`}</WeatherStat>
-            </CurrentWeather>
-        </WeatherOverviewBox>
-    </WeatherOverviewWrapper>
+            </Weather>
+        </Overview>
+    </Container>
 
 
 )
 
-export default WeatherOverview;
+export default CurrentWeather;

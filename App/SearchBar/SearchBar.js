@@ -36,37 +36,30 @@ const SubmitBtn = styled.input`
     &:hover {
         cursor: pointer;
         background-color: #eee8e2;
+        transition: ease-in-out;
     }
 
 `;
 
-const SearchIcon = styled(MagnifyingGlass)`
-    width: 40px;
-    height: 40px;
-`;
-
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state= {
-            page:1,
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <SearchBarWrapper>
-                    <SearchInput type="text" id="location" name="location" placeholder="Search for city..." />
-                    <SubmitBtn type="submit" value="Search" />
-                </SearchBarWrapper>
-            </div>
 
 
 
-        )
-    }
-
+const SearchBar = ({ city, onChange, onSearch }) => {
+    return (
+        <div>
+            <SearchBarWrapper>
+                <SearchInput 
+                    value={city}
+                    onChange={onChange}
+                    type="text" 
+                    id="location" 
+                    name="location" 
+                    placeholder="Search for city..." 
+                />
+                <SubmitBtn type="button" value="Search" onClick={onSearch} />
+            </SearchBarWrapper>
+         </div>
+    )
 }
 
 export default SearchBar;
