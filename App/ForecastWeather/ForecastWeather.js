@@ -14,7 +14,7 @@ const ForecastContainer = styled(Flex)`
     flex-direction: column;
 `;
 
-const ForecastWeather = ({ city, wind, humidity, maxTemp, minTemp, fiveDayForecast, onChange, onSearch }) => (
+const ForecastWeather = ({ city, wind, humidity, maxTemp, minTemp, fiveDayForecast, onChange, onSearch}) => (
     <ForecastContainer>
         <SearchBar 
             city={city}

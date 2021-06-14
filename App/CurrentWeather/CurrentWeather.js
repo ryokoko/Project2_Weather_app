@@ -51,7 +51,9 @@ const WeatherStat = styled.div`
 `;
 
 
-const CurrentWeather = ( { currentCity, temp, icon, condition } ) => (
+const CurrentWeather = ( { currentCity, temp, icon, condition } ) => {
+    console.log(`im first: ${currentCity}`);
+    return (
     
     <Container>
         <Header />
@@ -66,6 +68,6 @@ const CurrentWeather = ( { currentCity, temp, icon, condition } ) => (
     </Container>
 
 
-)
+)}
 
 export default CurrentWeather;
