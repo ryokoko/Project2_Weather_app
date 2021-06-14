@@ -10,9 +10,9 @@ import API_KEY from '../../src/env';
 
 
 const Container = styled(Flex)`
-    background-image: url('../src/Images/sunny.jpg'); /* 用的是html文件的relative path */
+    background-image: url('../src/Images/cloudy.jpg'); /* 用的是html文件的relative path */
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     flex-direction: row;
     align-items: stretch;
     height: 100vh;

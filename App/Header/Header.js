@@ -7,7 +7,8 @@ import CurrentDate from '../CurrentDate';
 
 const Navbar = styled(Flex)`
     flex-direction: row;
-    background-image: linear-gradient(#d4d8e2, transparent);
+    background-color: transparent;
+    color: #676d6d;
     padding: 3% 5%;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
