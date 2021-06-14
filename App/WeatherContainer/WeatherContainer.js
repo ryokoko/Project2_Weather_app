@@ -4,13 +4,14 @@ import ForecastWeather from '../ForecastWeather';
 
 import styled from 'styled-components';
 import Flex from '../../Components/Flex';
+import API_KEY from '../../src/env';
 
 /* import axios from 'axios'; */
 
 
 const Container = styled(Flex)`
     background-image: url('../src/Images/sunny.jpg'); /* 用的是html文件的relative path */
-    background-size: auto;
+    background-size: cover;
     background-repeat: no-repeat;
     flex-direction: row;
     align-items: stretch;
@@ -26,47 +27,54 @@ class WeatherContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
-            currentTemp: '--',
-            currentCity: '--',
-            currentWeather: '--',
+            currentTemp: '',
+            currentCity: '',
+            currentWeather: '',
             currentWeatherIcon: null,
             humidity: '--',
             wind: '--',
             maxTemp: '--',
             minTemp: '--',
             city: '',
+            fiveDayForecast: [],
         }
         this.getWeather = this.getWeather.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    componentDidMount() {
-        Promise.all([fetch('https://api.weatherapi.com/v1/forecast.json?key=cec7f5d329c14edbb7031703212805&q=canberra&days=1&aqi=no&alerts=no'), 
-        fetch('https://api.weatherapi.com/v1/forecast.json?key=cec7f5d329c14edbb7031703212805&q=canberra&days=5&aqi=no&alerts=no')])
-       
-        .then(([res1, res2]) => {
-            return Promise.all([res1.json(), res2.json()]);
-        })
-        .then(([result1, result2]) => {
-            this.setState({
-                currentTemp: result1.current.temp_c,
-                currentWeather: result1.current.condition.text,
-                currentCity: result1.location.name,
-                currentWeatherIcon: result1.current.condition.icon,
-                wind: result1.current.wind_kph,
-                humidity: result1.current.humidity,
-                maxTemp: result1.forecast.forecastday[0].day.maxtemp_c,
-                minTemp: result1.forecast.forecastday[0].day.mintemp_c,
-                fiveDayForecast: result2.forecast.forecastday,
-            });
-            /* console.log(result1); */
-            /* console.log(this.state.fiveDayForecast); */
-
-        })
-        .catch((error) => error && alert(error.message));
-        
-    }
     
+
+    componentDidMount() {
+        function getTemp(temp) {
+            return Math.round(temp);
+        };
+        function getIconImg(icon) {
+            return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        };
+        const CANBERRA_CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=canberra&appid=${API_KEY}&units=metric`;
+        //const CANBERRA_5DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=canberra&appid=${API_KEY}&units=metric`;
+        fetch(CANBERRA_CURRENT, {
+            method: 'GET',
+        })
+        .then((res) => {
+            return res.json();
+        })
+        .then((result) => {
+           
+            
+            this.setState({
+                currentTemp: getTemp(result.main.temp),
+                currentWeather: result.weather[0].main,
+                currentCity: result.name,
+                currentWeatherIcon: getIconImg(result.weather[0].icon),
+                wind: result.wind.speed,
+                humidity: result.main.humidity,
+                maxTemp: getTemp(result.main.temp_max),
+                minTemp: getTemp(result.main.temp_min),
+            });
+        })
+        .catch((error) => error && alert(error.message));   
+    }
 
     handleInputChange(e) {
         /* console.log(100, e.target.value)  */
@@ -75,19 +83,45 @@ class WeatherContainer extends React.Component {
             city: value,
         }, () => console.log(this.state.city))       
     }
+
     getWeather() {
+        function getTemp(temp) {
+            return Math.round(temp);
+        };
+        function getIconImg(icon) {
+            return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        };
         const { city } = this.state;
-        fetch(`https://api.weatherapi.com/v1/current.json?key=cec7f5d329c14edbb7031703212805&q=${city}&aqi=no`, {
-            method: 'GET',
+        const CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        const FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+        Promise.all([
+            fetch(CURRENT),
+            fetch(FORECAST)
+        ])
+        .then(([res1, res2]) => {
+            return Promise.all([res1.json(), res2.json()])
         })
-        .then((res) => res.json())
-        .then((result) => {
-            console.log(result);
+        .then(([res1, res2]) => {
+            const forecastArray = res2.list;
+             //console.log(this.state.fiveDayForecast);
+             const fiveDayForecast = [];
+             //find 0,8, 16, 24, 32th item in fiveDayForecast
+             for (let i = 0; i<forecastArray.length; i+=8) {
+                fiveDayForecast.push(forecastArray[i]);
+             }
+             console.log(fiveDayForecast);
+
+
             this.setState({
-                currentTemp: result.current.temp_c,
-                currentWeather: result.current.condition.text,
-                currentCity: result.location.name,
-                currentWeatherIcon: result.current.condition.icon,
+                currentTemp: getTemp(res1.main.temp),
+                currentWeather: res1.weather[0].main,
+                currentCity: res1.name,
+                currentWeatherIcon: getIconImg(res1.weather[0].icon),
+                wind: res1.wind.speed,
+                humidity: res1.main.humidity,
+                maxTemp: getTemp(res1.main.temp_max),
+                minTemp: getTemp(res1.main.temp_min),
+                fiveDayForecast: fiveDayForecast,
             });
         })
         .catch((error) => error && alert(error.message));       
@@ -108,7 +142,7 @@ class WeatherContainer extends React.Component {
                 <ForecastWeather city={city} 
                 humidity={humidity} wind={wind} 
                 maxTemp={maxTemp} minTemp={minTemp} 
-                fiveDayForecast={fiveDayForecast} 
+                fiveDayForecast={fiveDayForecast}
                 onChange={this.handleInputChange} onSearch={this.getWeather} />
             </Container>
         )
