@@ -10,7 +10,7 @@ import API_KEY from '../../src/env';
 
 
 const Container = styled(Flex)`
-    background-image: url("../src/Images/cloudy.jpg"); 
+    background-image: url("./src/Images/cloudy.jpg"); 
     background-size: cover;
     flex-direction: row;
     align-items: stretch;
