@@ -6,13 +6,12 @@ import styled from 'styled-components';
 import Flex from '../../Components/Flex';
 import API_KEY from '../../src/env';
 
-/* import axios from 'axios'; */
+
 
 
 const Container = styled(Flex)`
-    background-image: url('../src/Images/cloudy.jpg'); /* 用的是html文件的relative path */
+    background-image: url("../src/Images/cloudy.jpg"); 
     background-size: cover;
-    background-repeat: repeat-y;
     flex-direction: row;
     align-items: stretch;
     height: 100vh;
